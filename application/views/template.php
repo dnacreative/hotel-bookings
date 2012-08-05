@@ -28,7 +28,7 @@ a:hover
 </head>
 <body>
 	<div>
-		<h1>Biniarroca Booking Administration</h1>
+		<h1>Biniarroca Booking Administration 1.1</h1>
 	</div>
 	<div style='height:20px;'></div>  
     <div>

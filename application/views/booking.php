@@ -27,7 +27,7 @@ em { font-weight: bold; padding-right: 1em; vertical-align: top; color:red; }
 	<div id="form_container">
 	
 		<h1><a>Biniarroca Booking Form</a></h1>
-		<form id="myform" class="appnitro" method="post" action="http://wass.es/codeigniter/index.php/booking/save">
+		<form id="myform" class="appnitro" method="post" action="index.php/booking/save">
 		
 		<div class="form_description">
 			<h2>Biniarroca Booking Form</h2>
@@ -40,8 +40,14 @@ em { font-weight: bold; padding-right: 1em; vertical-align: top; color:red; }
 		<li>
 		<label class="description" for="name"><em>*</em>Name </label>
 		<div>
-			<input id="name" name="name" class="element text medium required" type="text" maxlength="255" value="" minlength="2"  maxlength="30" /><label for="name" >First</label>
-			<input id="surname" name="surname" class="element text medium required" type="text" maxlength="255" value="" minlength="2"  maxlength="30" /><label for="surname">Second</label>
+			<span>
+			<input id="name" name= "name" class="element text required" minlength="2" maxlength="255" size="8" value=""/>
+			<label>First</label>
+		</span>
+		<span>
+			<input id="surname" name= "surname" class="element text required" minlength="2" maxlength="255" size="14" value=""/>
+			<label>Last</label>
+		</span> 
 		</div> 
 		</li>	
 			
@@ -64,7 +70,13 @@ em { font-weight: bold; padding-right: 1em; vertical-align: top; color:red; }
 		<div>
 			<input id="phone" name="phone" class="element text medium digits required" type="text" maxlength="255" value="" minlength="6"  maxlength="20"/> 
 		</div> 
-		</li>		<li id="li_2" >
+		</li>		
+
+
+
+
+
+		<li id="li_2" >
 		<label class="description" for="element_2">Address </label>
 		
 		<div>
@@ -293,13 +305,22 @@ em { font-weight: bold; padding-right: 1em; vertical-align: top; color:red; }
 			</select>
 		<label for="country"><em>*</em>Country</label>
 	</div> 
-		</li>		<li class="section_break">
+		</li>		
+
+
+
+
+		<li class="section_break">
 			<h3>
 
 Booking details:</h3>
 			<p></p>
-		</li>		<li id="li_4" >
-		<label class="description" for="arrival"><em>*</em>Arrival </label>
+		</li>		
+
+
+
+		<li id="li_4" >
+		<label class="description" for="arrival"><em>*</em>Arrival</label>
 		<span>
 			<input id="arrival_1" name="arrival_1" class="element text required digits" size="2" maxlength="2" value="" type="text"> /
 			<label for="arrival_1">DD</label>
@@ -316,6 +337,9 @@ Booking details:</h3>
 		<span id="calendar_4">
 			<img id="cal_img_4" class="datepicker" src="calendar.gif" alt="Pick a date.">	
 		</span>
+
+		Flight No. : <input id="arrival_flight" name="arrival_flight" class="element text" type="text" maxlength="255" value=""  minlength="2"  maxlength="20" size="6"/>
+		
 		<script type="text/javascript">
 			Calendar.setup({
 			inputField	 : "arrival_3",
@@ -326,10 +350,16 @@ Booking details:</h3>
 			onSelect	 : selectDate
 			});
 		</script>
-		 
-		</li>		<li id="li_5" >
-		<label class="description" for="departure"><em>*</em>Departure
- </label>
+		</li>
+
+
+
+
+
+
+
+		<li id="li_5" >
+		<label class="description" for="departure"><em>*</em>Departure</label>
 		<span>
 			<input id="departure_1" name="departure_1" class="element text required digits" size="2" maxlength="2" value="" type="text"> /
 			<label for="departure_1">DD</label>
@@ -346,6 +376,10 @@ Booking details:</h3>
 		<span id="calendar_5">
 			<img id="cal_img_5" class="datepicker" src="calendar.gif" alt="Pick a date.">	
 		</span>
+
+		Flight No. : <input id="departure_flight" name="departure_flight" class="element text" type="text" maxlength="255" value=""  minlength="2"  maxlength="20" size="6"/>
+		
+
 		<script type="text/javascript">
 			Calendar.setup({
 			inputField	 : "departure_3",
@@ -357,7 +391,18 @@ Booking details:</h3>
 			});
 		</script>
 		 
-		</li>		<li id="li_8" >
+		</li>		
+
+
+
+
+
+
+
+
+
+
+		<li id="li_8" >
 		<label class="description" for="persons"><em>*</em>Number of persons </label>
 		<div>
 		<select class="element select small required" id="persons" name="persons"> 
@@ -463,6 +508,7 @@ Credit Card<br>
 		</span>
 		</div> 
 		</li>
+
 			
 					<li class="buttons">
 			    

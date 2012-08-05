@@ -24,8 +24,10 @@ class Booking extends CI_Controller {
 		    'state'			=>	$_POST['state'],
 		    'zipcode'		=>	$_POST['zipcode'],
 		    'country'		=>	$_POST['country'],
-		    'arrival' 		=>	$_POST['arrival_1'] . "-" . $_POST['arrival_2'] . "-" . $_POST['arrival_3'],
-		    'departure' 	=>	$_POST['departure_1'] . "-" . $_POST['departure_2'] . "-" . $_POST['departure_3'],
+		    'arrival' 		=>	$_POST['arrival_3'] . "/" . $_POST['arrival_2'] . "/" . $_POST['arrival_1'],
+		    'arrival_flight'=>	$_POST['arrival_flight'],
+		    'departure' 	=>	$_POST['departure_3'] . "/" . $_POST['departure_2'] . "/" . $_POST['departure_1'],
+		    'departure_flight'=>$_POST['departure_flight'],
 		    'persons' 		=>	$_POST['persons'],
 		    'suites' 		=>	$_POST['suites'],
 		    'doubles' 		=>	$_POST['doubles'],
@@ -42,15 +44,18 @@ class Booking extends CI_Controller {
 		// Save to DB
 		$this->db->insert('bookings', $data);
 
+		// Send to email
+		$this->_sendmail($data,'eduwass@gmail.com');
+
 		// Load thankyou message
 		$this->load->view('thankyou',$data);
 
 	}
 
-	public function bookings()
+	public function admin()
 	{
 	$crud = new grocery_CRUD();
-	$crud->set_theme('datatables');
+	//$crud->set_theme('datatables');
     $crud->set_table('bookings');
     $crud->columns('created_at','name','surname','passport','arrival','departure');
  
@@ -63,7 +68,13 @@ class Booking extends CI_Controller {
 	function _example_output($output = null)
  
     {
-        $this->load->view('example.php',$output);    
+        $this->load->view('template',$output);    
+    }
+
+    function _sendmail($data,$email){
+
+
+
     }
 
 }
