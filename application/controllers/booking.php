@@ -24,14 +24,15 @@ class Booking extends CI_Controller {
 		    'state'			=>	$_POST['state'],
 		    'zipcode'		=>	$_POST['zipcode'],
 		    'country'		=>	$_POST['country'],
-		    'arrival' 		=>	$_POST['arrival_3'] . "/" . $_POST['arrival_2'] . "/" . $_POST['arrival_1'],
+		    'arrival' 		=>	$_POST['arrival_3'] . "/" . $_POST['arrival_2'] . "/" . $_POST['arrival_1'] . " " . $_POST['arrival_4'] . ":" . $_POST['arrival_5'] . ":00",
 		    'arrival_flight'=>	$_POST['arrival_flight'],
-		    'departure' 	=>	$_POST['departure_3'] . "/" . $_POST['departure_2'] . "/" . $_POST['departure_1'],
+		    'departure' 	=>	$_POST['departure_3'] . "/" . $_POST['departure_2'] . "/" . $_POST['departure_1']. " " . $_POST['departure_4'] . ":" . $_POST['departure_5'] . ":00",
 		    'departure_flight'=>$_POST['departure_flight'],
 		    'persons' 		=>	$_POST['persons'],
 		    'suites' 		=>	$_POST['suites'],
 		    'doubles' 		=>	$_POST['doubles'],
 		    'singles' 		=>	$_POST['singles'],
+		    'restaurant'	=>	$_POST['restaurant'],
 		    'comments' 		=>	$_POST['comments'],
 		    'cc_type'		=>	$_POST['cc_type'],
 		    'cc_number' 	=>	$_POST['cc_number'],
@@ -58,7 +59,9 @@ class Booking extends CI_Controller {
 	//$crud->set_theme('datatables');
     $crud->set_table('bookings');
     $crud->columns('created_at','name','surname','passport','arrival','departure');
- 
+ 	$crud->change_field_type('created_at', 'hidden');
+ 	$crud->change_field_type('restaurant', 'text');
+ 	$crud->change_field_type('comments', 'text');
     $output = $crud->render();
  
     $this->_example_output($output);

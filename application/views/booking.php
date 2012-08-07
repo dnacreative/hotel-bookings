@@ -14,8 +14,19 @@ em { font-weight: bold; padding-right: 1em; vertical-align: top; color:red; }
 </style>
   <script>
   $(document).ready(function(){
-    $("#myform").validate();
+    $("#myform").validate({
+		rules: {
+			
+			agree: "required"
+		},
+		messages: {
+			agree: "X"
+		}
+	});
   });
+
+
+  
   </script>
 
 </head>
@@ -31,7 +42,7 @@ em { font-weight: bold; padding-right: 1em; vertical-align: top; color:red; }
 		
 		<div class="form_description">
 			<h2>Biniarroca Booking Form</h2>
-			<p>Please enter your booking details</p>
+			<p>This form is secured with SSL and follows a <a href="#">Policy of Protection Of Personal Data</a> for your security</p>
 		</div>
 
 
@@ -337,8 +348,6 @@ Booking details:</h3>
 		<span id="calendar_4">
 			<img id="cal_img_4" class="datepicker" src="calendar.gif" alt="Pick a date.">	
 		</span>
-
-		Flight No. : <input id="arrival_flight" name="arrival_flight" class="element text" type="text" maxlength="255" value=""  minlength="2"  maxlength="20" size="6"/>
 		
 		<script type="text/javascript">
 			Calendar.setup({
@@ -350,6 +359,24 @@ Booking details:</h3>
 			onSelect	 : selectDate
 			});
 		</script>
+
+
+			<span>
+				<input id="arrival_4" name="arrival_4" class="element text required digits" size="2" maxlength="2" minlength="2" type="text"> : <label for="arrival_4">HH</label>
+			</span>
+
+			<span>
+				<input id="arrival_5" name="arrival_5" class="element text required digits" size="2" maxlength="2" minlength="2" type="text"> : <label for="arrival_5">MM</label>
+			</span>
+
+		Flight No. : <input id="arrival_flight" name="arrival_flight" class="element text" type="text" maxlength="255" value=""  minlength="2"  maxlength="20" size="6"/>
+		
+		
+
+
+		
+
+
 		</li>
 
 
@@ -377,8 +404,6 @@ Booking details:</h3>
 			<img id="cal_img_5" class="datepicker" src="calendar.gif" alt="Pick a date.">	
 		</span>
 
-		Flight No. : <input id="departure_flight" name="departure_flight" class="element text" type="text" maxlength="255" value=""  minlength="2"  maxlength="20" size="6"/>
-		
 
 		<script type="text/javascript">
 			Calendar.setup({
@@ -390,6 +415,17 @@ Booking details:</h3>
 			onSelect	 : selectDate
 			});
 		</script>
+
+			<span>
+				<input id="departure_4" name="departure_4" class="element text required digits" size="2" maxlength="2" minlength="2" type="text"> : <label for="departure_4">HH</label>
+			</span>
+
+			<span>
+				<input id="departure_5" name="departure_5" class="element text required digits" size="2" maxlength="2" minlength="2" type="text"> : <label for="departure_5">MM</label>
+			</span>
+		 
+		Flight No. : <input id="departure_flight" name="departure_flight" class="element text" type="text" maxlength="255" value=""  minlength="2"  maxlength="20" size="6"/>
+		
 		 
 		</li>		
 
@@ -459,12 +495,27 @@ Booking details:</h3>
 
 		</select>
 		</div> 
-		</li>		<li id="li_17" >
+		</li>		
+
+		<li id="li_17" >
+		<label class="description" for="comments">Restaurant reservations (closed Sundays)</label>
+		
+		<div>
+			<textarea name="restaurant"	class="textarea medium" onFocus="this.value=''; return false;">Example: 19/08/2014 - 20:00
+			</textarea>	
+		</div>
+		</li>
+
+		<li id="li_18" >
 		<label class="description" for="comments">Special requirements (i.e. honeymoon, etc)? </label>
 		<div>
 			<textarea id="comments" name="comments" class="element textarea medium"></textarea> 
-		</div> 
-		</li>		<li class="section_break">
+		</div>
+		</li>
+
+
+
+		<li class="section_break">
 			<h3>
 
 Credit Card<br>
@@ -509,10 +560,18 @@ Credit Card<br>
 		</div> 
 		</li>
 
+		<li class="section_break"></li>
 			
-					<li class="buttons">
-			    
-				<input id="saveForm" class="button_text" type="submit" name="submit" value="Submit" />
+				<li class="buttons">
+
+				<input type="checkbox" class="checkbox" id="agree" name="agree" />
+				<label class="choice" for="agree">I have read and I ACCEPT the <a href="#">Legal Agreement</a></label>
+				
+			    <br>
+
+
+			    <div align="center"><input id="saveForm" class="button_text" type="submit" name="submit" value="Submit" /></div>
+				
 		</li>
 			</ul>
 		</form>	
