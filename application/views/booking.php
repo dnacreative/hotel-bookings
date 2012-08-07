@@ -501,8 +501,7 @@ Booking details:</h3>
 		<label class="description" for="comments">Restaurant reservations (closed Sundays)</label>
 		
 		<div>
-			<textarea name="restaurant"	class="textarea medium" onFocus="this.value=''; return false;">Example: 19/08/2014 - 20:00
-			</textarea>	
+			<textarea name="restaurant"	class="textarea medium" onFocus="this.value=''; return false;">Example: 19/08/2014 - 20:00</textarea>	
 		</div>
 		</li>
 
@@ -526,8 +525,8 @@ Credit Card<br>
 		<div>
 		<select class="element select large required" id="cc_type" name="cc_type"> 
 			<option value="" selected="selected"></option>
-<option value="1" >Visa</option>
-<option value="2" >MasterCard</option>
+<option value="Visa" >Visa</option>
+<option value="MasterCard" >MasterCard</option>
 
 		</select>
 		</div> 
