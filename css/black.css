@@ -350,15 +350,15 @@ ul.actions li {display: inline; margin-right: 5px;}
 	table.calendar .inactive {color: #aaa;}
 	table.calendar div.items a {border: 0; margin: 0 1px;}
 	
-/* login page */
-#login {background: #222; padding: 100px;}
-#login .box {float: none; margin: 0 auto;}
-#login .boxin {box-shadow: #111 0 0 10px; -webkit-box-shadow: #111 0 0 10px; -moz-box-shadow: #111 0 0 10px; border: 0;}
-#login .header {padding-top: 20px; padding-bottom: 15px; margin: 0;}
-#login table {width: 75%; margin: 0 auto;}
-#login th,
-#login td {padding: 0 0 5px 0;}
-#login th {width: 60px;}
-#login td.proceed {padding-right: 0;}
-#login td.proceed input {margin: 0;}
-#login input.txt {width: 260px;}
+/* loginn page */
+#loginn {background: #222; padding: 100px;}
+#loginn .box {float: none; margin: 0 auto;}
+#loginn .boxin {box-shadow: #111 0 0 10px; -webkit-box-shadow: #111 0 0 10px; -moz-box-shadow: #111 0 0 10px; border: 0;}
+#loginn .header {padding-top: 20px; padding-bottom: 15px; margin: 0;}
+#loginn table {width: 75%; margin: 0 auto;}
+#loginn th,
+#loginn td {padding: 0 0 5px 0;}
+#loginn th {width: 60px;}
+#loginn td.proceed {padding-right: 0;}
+#loginn td.proceed input {margin: 0;}
+#loginn input.txt {width: 260px;}
