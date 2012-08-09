@@ -4,8 +4,16 @@ class Booking extends CI_Controller {
 
 	public function index()
 	{
-		$data['title'] = "Biniarroca";
-		$this->load->view('booking',$data);
+		
+		// Get language files (default=english)
+		if(isset($_GET['lan'])){
+			$this->lang->load('form', $_GET['lan']);
+		} else {
+			$this->lang->load('form', 'english');
+		}
+		
+		// Load booking form view
+		$this->load->view('booking');
 	}
 
 	public function save()
@@ -60,16 +68,47 @@ class Booking extends CI_Controller {
 
 	// Generates admin page
 
-	$crud = new grocery_CRUD();
-	//$crud->set_theme('datatables');
-    $crud->set_table('bookings');
-    $crud->columns('created_at','name','surname','passport','arrival','departure','code');
- 	$crud->change_field_type('created_at', 'hidden');
- 	$crud->change_field_type('restaurant', 'text');
- 	$crud->change_field_type('comments', 'text');
-    $output = $crud->render();
- 
-    $this->_example_output($output);
+		// Load login libs
+		$this->load->library('tank_auth');
+		$this->load->helper('url');
+
+		// If logged in, show admin panel
+		if( $this->tank_auth->is_logged_in() ) {
+
+			$crud = new grocery_CRUD();
+			//$crud->set_theme('datatables');
+		    $crud->set_table('bookings');
+		    $crud->columns('created_at','name','surname','passport','arrival','departure','code');
+		 	$crud->change_field_type('created_at', 'hidden');
+		 	$crud->change_field_type('restaurant', 'text');
+		 	$crud->change_field_type('comments', 'text');
+		    $output = $crud->render();
+		 
+		    $this->_example_output($output);
+		
+		} else {
+			// send to login page
+			redirect('/auth/login');
+		}
+		//$this->tank_auth->login();
+		//$this->lang->load('tank_auth');
+		/*
+		// Require login
+		if(!$this->tank_auth->is_logged_in()){
+			$this->load->view('auth/login_form');
+		} else {
+			$crud = new grocery_CRUD();
+			//$crud->set_theme('datatables');
+		    $crud->set_table('bookings');
+		    $crud->columns('created_at','name','surname','passport','arrival','departure','code');
+		 	$crud->change_field_type('created_at', 'hidden');
+		 	$crud->change_field_type('restaurant', 'text');
+		 	$crud->change_field_type('comments', 'text');
+		    $output = $crud->render();
+		 
+		    $this->_example_output($output);
+		}
+		*/
 
 	}
 

@@ -37,47 +37,47 @@ em { font-weight: bold; padding-right: 1em; vertical-align: top; color:red; }
 	<img id="top" src="top.png" alt="">
 	<div id="form_container">
 	
-		<h1><a>Biniarroca Booking Form</a></h1>
+		<h1><a>.</a></h1>
 		<form id="myform" class="appnitro" method="post" action="index.php/booking/save">
 		
 		<div class="form_description">
-			<h2>Biniarroca Booking Form</h2>
-			<p>This form is secured with SSL and follows a <a href="#">Policy of Protection Of Personal Data</a> for your security</p>
+			<h2><?= $this->lang->line('title'); ?></h2>
+			<p><?= $this->lang->line('description'); ?></p>
 		</div>
 
 
 		<ul>
 
 		<li>
-		<label class="description" for="name"><em>*</em>Name </label>
+		<label class="description" for="name"><em>*</em><?= $this->lang->line('name'); ?></label>
 		<div>
 			<span>
 			<input id="name" name= "name" class="element text required" minlength="2" maxlength="255" size="8" value=""/>
-			<label>First</label>
+			<label><?= $this->lang->line('first'); ?></label>
 		</span>
 		<span>
 			<input id="surname" name= "surname" class="element text required" minlength="2" maxlength="255" size="14" value=""/>
-			<label>Last</label>
+			<label><?= $this->lang->line('last'); ?></label>
 		</span> 
 		</div> 
 		</li>	
 			
 		<li>
-		<label class="description" for="passport"><em>*</em>Passport </label>
+		<label class="description" for="passport"><em>*</em><?= $this->lang->line('passport'); ?></label>
 		<div>
 			<input id="passport" name="passport" class="element text medium required" type="text" maxlength="255" value=""  minlength="2"  maxlength="20"/> 
 		</div> 
 		</li>		
 
 		<li id="li_6" >
-		<label class="description" for="email"><em>*</em>Email </label>
+		<label class="description" for="email"><em>*</em><?= $this->lang->line('email'); ?></label>
 		<div>
 			<input id="email" name="email" class="element text medium required email" type="text" maxlength="255" value=""/> 
 		</div> 
 		</li>		
 
 		<li id="li_3" >
-		<label class="description" for="phone"><em>*</em>Phone </label>
+		<label class="description" for="phone"><em>*</em><?= $this->lang->line('phone'); ?></label>
 		<div>
 			<input id="phone" name="phone" class="element text medium digits required" type="text" maxlength="255" value="" minlength="6"  maxlength="20"/> 
 		</div> 
@@ -88,31 +88,31 @@ em { font-weight: bold; padding-right: 1em; vertical-align: top; color:red; }
 
 
 		<li id="li_2" >
-		<label class="description" for="element_2">Address </label>
+		<label class="description" for="element_2"><?= $this->lang->line('address'); ?></label>
 		
 		<div>
 			<input id="street_addr_1" name="street_addr_1" class="element text large required" minlength="2"  maxlength="30" value="" type="text">
-			<label for="street_addr_1"><em>*</em>Street Address</label>
+			<label for="street_addr_1"><em>*</em><?= $this->lang->line('streetad1'); ?></label>
 		</div>
 	
 		<div>
 			<input id="street_addr_2" name="street_addr_2" class="element text large" value="" type="text">
-			<label for="street_addr_2">Address Line 2</label>
+			<label for="street_addr_2"><?= $this->lang->line('streetad2'); ?></label>
 		</div>
 	
 		<div class="left">
 			<input id="city" name="city" class="element text medium required" value="" type="text">
-			<label for="city"><em>*</em>City</label>
+			<label for="city"><em>*</em><?= $this->lang->line('city'); ?></label>
 		</div>
 	
 		<div class="right">
 			<input id="state" name="state" class="element text medium required" value="" type="text">
-			<label for="state"><em>*</em>State / Province / Region</label>
+			<label for="state"><em>*</em><?= $this->lang->line('state'); ?></label>
 		</div>
 	
 		<div class="left">
 			<input id="zipcode" name="zipcode" class="element text medium required digits" maxlength="15" value="" type="text">
-			<label for="zipcode"><em>*</em>Postal / Zip Code</label>
+			<label for="zipcode"><em>*</em><?= $this->lang->line('zipcode'); ?></label>
 		</div>
 	
 		<div class="right">
@@ -314,7 +314,7 @@ em { font-weight: bold; padding-right: 1em; vertical-align: top; color:red; }
 <option value="Zimbabwe" >Zimbabwe</option>
 	
 			</select>
-		<label for="country"><em>*</em>Country</label>
+		<label for="country"><em>*</em><?= $this->lang->line('country'); ?></label>
 	</div> 
 		</li>		
 
@@ -322,16 +322,14 @@ em { font-weight: bold; padding-right: 1em; vertical-align: top; color:red; }
 
 
 		<li class="section_break">
-			<h3>
-
-Booking details:</h3>
+			<h3><?= $this->lang->line('bookingdtls'); ?></h3>
 			<p></p>
 		</li>		
 
 
 
 		<li id="li_4" >
-		<label class="description" for="arrival"><em>*</em>Arrival</label>
+		<label class="description" for="arrival"><em>*</em><?= $this->lang->line('arrival'); ?></label>
 		<span>
 			<input id="arrival_1" name="arrival_1" class="element text required digits" size="2" maxlength="2" value="" type="text"> /
 			<label for="arrival_1">DD</label>
@@ -366,10 +364,10 @@ Booking details:</h3>
 			</span>
 
 			<span>
-				<input id="arrival_5" name="arrival_5" class="element text required digits" size="2" maxlength="2" minlength="2" type="text"> : <label for="arrival_5">MM</label>
+				<input id="arrival_5" name="arrival_5" class="element text required digits" size="2" maxlength="2" minlength="2" type="text"><label for="arrival_5">MM</label>
 			</span>
 
-		Flight No. : <input id="arrival_flight" name="arrival_flight" class="element text" type="text" maxlength="255" value=""  minlength="2"  maxlength="20" size="6"/>
+		<?= $this->lang->line('flightno'); ?> : <input id="arrival_flight" name="arrival_flight" class="element text" type="text" maxlength="255" value=""  minlength="2"  maxlength="20" size="6"/>
 		
 		
 
@@ -386,7 +384,7 @@ Booking details:</h3>
 
 
 		<li id="li_5" >
-		<label class="description" for="departure"><em>*</em>Departure</label>
+		<label class="description" for="departure"><em>*</em><?= $this->lang->line('departure'); ?></label>
 		<span>
 			<input id="departure_1" name="departure_1" class="element text required digits" size="2" maxlength="2" value="" type="text"> /
 			<label for="departure_1">DD</label>
@@ -421,10 +419,10 @@ Booking details:</h3>
 			</span>
 
 			<span>
-				<input id="departure_5" name="departure_5" class="element text required digits" size="2" maxlength="2" minlength="2" type="text"> : <label for="departure_5">MM</label>
+				<input id="departure_5" name="departure_5" class="element text required digits" size="2" maxlength="2" minlength="2" type="text"><label for="departure_5">MM</label>
 			</span>
 		 
-		Flight No. : <input id="departure_flight" name="departure_flight" class="element text" type="text" maxlength="255" value=""  minlength="2"  maxlength="20" size="6"/>
+		<?= $this->lang->line('flightno'); ?> : <input id="departure_flight" name="departure_flight" class="element text" type="text" maxlength="255" value=""  minlength="2"  maxlength="20" size="6"/>
 		
 		 
 		</li>		
@@ -439,7 +437,7 @@ Booking details:</h3>
 
 
 		<li id="li_8" >
-		<label class="description" for="persons"><em>*</em>Number of persons </label>
+		<label class="description" for="persons"><em>*</em><?= $this->lang->line('persons'); ?></label>
 		<div>
 		<select class="element select small required" id="persons" name="persons"> 
 			<option value="" selected="selected"></option>
@@ -457,7 +455,7 @@ Booking details:</h3>
 		</select>
 		</div> 
 		</li>		<li id="li_9" >
-		<label class="description" for="suites">Number of suites </label>
+		<label class="description" for="suites"><?= $this->lang->line('suites'); ?></label>
 		<div>
 		<select class="element select small" id="suites" name="suites"> 
 			<option value="" selected="selected"></option>
@@ -470,7 +468,7 @@ Booking details:</h3>
 		</select>
 		</div> 
 		</li>		<li id="li_11" >
-		<label class="description" for="doubles">Number of doubles </label>
+		<label class="description" for="doubles"><?= $this->lang->line('doubles'); ?></label>
 		<div>
 		<select class="element select small" id="doubles" name="doubles"> 
 			<option value="" selected="selected"></option>
@@ -483,7 +481,7 @@ Booking details:</h3>
 		</select>
 		</div> 
 		</li>		<li id="li_10" >
-		<label class="description" for="singles">Number of singles </label>
+		<label class="description" for="singles"><?= $this->lang->line('singles'); ?></label>
 		<div>
 		<select class="element select small" id="singles" name="singles"> 
 			<option value="" selected="selected"></option>
@@ -498,7 +496,7 @@ Booking details:</h3>
 		</li>		
 
 		<li id="li_17" >
-		<label class="description" for="comments">Restaurant reservations (closed Sundays)</label>
+		<label class="description" for="comments"><?= $this->lang->line('restaurant'); ?></label>
 		
 		<div>
 			<textarea name="restaurant"	class="textarea medium" onFocus="this.value=''; return false;">Example: 19/08/2014 - 20:00</textarea>	
@@ -506,7 +504,7 @@ Booking details:</h3>
 		</li>
 
 		<li id="li_18" >
-		<label class="description" for="comments">Special requirements (i.e. honeymoon, etc)? </label>
+		<label class="description" for="comments"><?= $this->lang->line('comments'); ?></label>
 		<div>
 			<textarea id="comments" name="comments" class="element textarea medium"></textarea> 
 		</div>
@@ -515,13 +513,11 @@ Booking details:</h3>
 
 
 		<li class="section_break">
-			<h3>
-
-Credit Card<br>
-(We will confirm total price with you before charging your card)</h3>
+			<h3><?= $this->lang->line('cc'); ?><br>
+<?= $this->lang->line('cc_desc'); ?></h3>
 			<p></p>
 		</li>		<li id="li_20" >
-		<label class="description" for="cc_type"><em>*</em>Type </label>
+		<label class="description" for="cc_type"><em>*</em><?= $this->lang->line('cc_type'); ?></label>
 		<div>
 		<select class="element select large required" id="cc_type" name="cc_type"> 
 			<option value="" selected="selected"></option>
@@ -531,12 +527,12 @@ Credit Card<br>
 		</select>
 		</div> 
 		</li>		<li id="li_15" >
-		<label class="description" for="cc_number"><em>*</em>Card Number </label>
+		<label class="description" for="cc_number"><em>*</em><?= $this->lang->line('cc_number'); ?></label>
 		<div>
 			<input id="cc_number" name="cc_number" class="element text large required digits" type="text" size="15" maxlength="15" minlength="15"  maxlength="15" value=""/> 
 		</div> 
 		</li>		<li id="li_18" >
-		<label class="description" for="element_18"><em>*</em>Card Holder Name </label>
+		<label class="description" for="element_18"><em>*</em><?= $this->lang->line('cc_holder'); ?></label>
 		<span>
 			<input id="cc_name" name= "cc_name" class="element text required" maxlength="255" size="8" value=""/>
 			<label>First</label>
@@ -546,7 +542,7 @@ Credit Card<br>
 			<label>Last</label>
 		</span> 
 		</li>		<li id="li_16" >
-		<label class="description" for="element_16"><em>*</em>Expiry Date </label>
+		<label class="description" for="element_16"><em>*</em><?= $this->lang->line('cc_expiry'); ?></label>
 		<div>
 					<span>
 			<input id="cc_expiry_mm" name="cc_expiry_mm" class="element text required digits" size="2" maxlength="2" value="" type="text"> /
@@ -564,12 +560,12 @@ Credit Card<br>
 				<li class="buttons">
 
 				<input type="checkbox" class="checkbox" id="agree" name="agree" />
-				<label class="choice" for="agree">I have read and I ACCEPT the <a href="#">Legal Agreement</a></label>
+				<label class="choice" for="agree"><?= $this->lang->line('agreement'); ?></label>
 				
 			    <br>
 
 
-			    <div align="center"><input id="saveForm" class="button_text" type="submit" name="submit" value="Submit" /></div>
+			    <div align="center"><input id="saveForm" class="button_text" type="submit" name="submit" value="<?= $this->lang->line('submit'); ?>" /></div>
 				
 		</li>
 			</ul>
