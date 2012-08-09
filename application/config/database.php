@@ -49,9 +49,9 @@ $active_group = 'default';
 $active_record = TRUE;
 
 $db['default']['hostname'] = 'localhost';
-$db['default']['username'] = 'wasses_bini';
+$db['default']['username'] = 'hs0018_bini';
 $db['default']['password'] = 'binipass';
-$db['default']['database'] = 'wasses_bini';
+$db['default']['database'] = 'hs0018';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;

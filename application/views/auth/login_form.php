@@ -43,7 +43,7 @@ $captcha = array(
         <meta http-equiv="content-style-type" content="text/css" />
         <meta http-equiv="content-script-type" content="text/javascript" />
         
-        <title>Log in · Boxie Admin</title>
+        <title>Log in · Biniarroca Admin</title>
         
         <link rel="stylesheet" type="text/css" href="<?=base_url()?>css/black.css" media="screen, projection, tv" />  
         <!--[if lte IE 7.0]><link rel="stylesheet" type="text/css" href="<?=base_url()?>css/ie.css" media="screen, projection, tv" /><![endif]-->
