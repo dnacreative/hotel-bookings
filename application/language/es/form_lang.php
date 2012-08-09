@@ -18,8 +18,8 @@ $lang['zipcode'] = 'Código Postal';
 $lang['country'] = 'País';
 
 $lang['bookindtls'] = 'Detalles de la Reserva';
-$lang['arrival'] = 'Llegada';
-$lang['departure'] = 'Salida';
+$lang['arrival'] = 'Fecha de Llegada';
+$lang['departure'] = 'Fecha de Salida';
 $lang['flightno'] = 'Núm. Vuelo';
 $lang['persons'] = 'Número de adultos';
 $lang['suites'] = 'Number of suites';

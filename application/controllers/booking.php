@@ -76,7 +76,7 @@ class Booking extends CI_Controller {
 		if( $this->tank_auth->is_logged_in() ) {
 
 			$crud = new grocery_CRUD();
-			//$crud->set_theme('datatables');
+			$crud->set_theme('datatables');
 		    $crud->set_table('bookings');
 		    $crud->columns('created_at','name','surname','passport','arrival','departure','code');
 		 	$crud->change_field_type('created_at', 'hidden');
