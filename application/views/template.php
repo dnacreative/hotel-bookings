@@ -104,7 +104,7 @@ foreach($css_files as $file): ?>
 		<div id="header">
 			<div class="inner-container clearfix">
 				<h1 id="logo">
-					<a class="home" href="#" title="Go to admin's homepage">
+					<a class="home" href="<?=base_url()?>index.php/booking/admin" title="Go to admin's homepage">
 						<!-- your title -->
 						<span class="ir"></span>
 					</a><br />
@@ -125,8 +125,8 @@ foreach($css_files as $file): ?>
 			<div class="inner-container clearfix">
 				<div id="-wrap">
 					<div >
-						<img id="plustext" alt="Increase text size" src="<?=base_url()?>css/img/zoom_in.gif" onclick="resizeText(1)" />
-						<img id="minustext" alt="Decrease text size" src="<?=base_url()?>css/img/zoom_out.gif" onclick="resizeText(-1)" />
+						<a href="#"><img id="plustext" alt="Increase text size" src="<?=base_url()?>css/img/zoom_in.gif" onclick="resizeText(1)" /></a>
+						<a href="#"><img id="minustext" alt="Decrease text size" src="<?=base_url()?>css/img/zoom_out.gif" onclick="resizeText(-1)" /></a>
 					</div>
 				</div><!-- #h-wrap -->
 				

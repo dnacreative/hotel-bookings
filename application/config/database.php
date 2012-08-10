@@ -49,9 +49,9 @@ $active_group = 'default';
 $active_record = TRUE;
 
 $db['default']['hostname'] = 'localhost';
-$db['default']['username'] = 'hs0018_bini';
-$db['default']['password'] = 'binipass';
-$db['default']['database'] = 'hs0018';
+$db['default']['username'] = 'hs0018_hs0018';
+$db['default']['password'] = 'C181251B';
+$db['default']['database'] = 'hs0018_bini';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;
@@ -62,8 +62,27 @@ $db['default']['char_set'] = 'utf8';
 $db['default']['dbcollat'] = 'utf8_general_ci';
 $db['default']['swap_pre'] = '';
 $db['default']['autoinit'] = TRUE;
-$db['default']['stricton'] = FALSE;
+$db['default']['stricton'] = TRUE;
 
 
 /* End of file database.php */
 /* Location: ./application/config/database.php */
+
+/*
+echo '<pre>';
+     print_r($db['default']);
+  echo '</pre>';
+
+  echo 'Trying to connect to database: ' .$db['default']['database'];
+  $dbh=mysql_connect
+  (
+    $db['default']['hostname'],
+    $db['default']['username'],
+    $db['default']['password'])
+    or die('Cannot connect to the database because: ' . mysql_error());
+    mysql_select_db ($db['default']['database']);
+
+    echo '<br />   Connected OK:'  ;
+    die( 'file: ' .__FILE__ . '--> Line: ' .__LINE__); 	
+*/
+ 

@@ -79,12 +79,13 @@ div.form-button-box {
 }
 .report-div
 {
-	padding: 10px;
+	padding: 40px;
 	border-style: solid;
 	border-width: 1px;
-	margin:10px 10px 5px 10px;
+	margin:0px;
 	display:none;
 	font-family: Arial,Helvetica,sans-serif;
+	background-color: white;
 }
 .report-div.report-list
 {

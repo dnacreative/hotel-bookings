@@ -56,7 +56,7 @@ class Booking extends CI_Controller {
 		$this->db->insert('bookings', $data);
 
 		// Send email to biniarroca and copy to client
-		$this->_sendmail($data,'eduardo.wass@est.fib.upc.edu');
+		$this->_sendmail($data,'hotel@biniarroca.com');
 
 		// Load thankyou message
 		$this->load->view('thankyou',$data);
@@ -79,19 +79,20 @@ class Booking extends CI_Controller {
 			$crud->set_theme('datatables');
 		    $crud->set_table('bookings');
 		    $crud->columns('created_at','name','surname','passport','arrival','departure','code');
-		 	$crud->order_by('created_at','desc');
 		 	$crud->change_field_type('created_at', 'hidden');
 		 	$crud->change_field_type('restaurant', 'text');
 		 	$crud->change_field_type('comments', 'text');
+		 	$crud->order_by('created_at','desc');
 		    $output = $crud->render();
 		 
 		    $this->_example_output($output);
 		
+		
 		} else {
-			// send to login page
+			// else send to login page
 			redirect('/auth/login');
 		}
-
+		
 	}
 
 	function _example_output($output = null)
@@ -103,10 +104,10 @@ class Booking extends CI_Controller {
     function _sendmail($data,$email){
 
     	$this->load->library('email');
-		//$config['mailtype'] = 'html';
-		$config['charset'] = 'utf-8';
+		$config['mailtype'] = 'html';
+		//$config['charset'] = 'utf-8';
 
-		$this->email->initialize($config);
+		//$this->email->initialize($config);
 
 		// Clear example data from restaurant if present
 		if($data['restaurant']=="Example: 19/08/2014 - 20:00"){
@@ -185,7 +186,7 @@ This is the booking information that we have, please contact us if there is any 
 		" . $message;
 
 		$this->email->from('hotel@biniarroca.com', 'Hotel Biniarroca');
-		$this->email->to($email);
+		$this->email->to($data['email']);
 		$this->email->subject('Biniarroca Booking ' . $data['code'] );
 		$this->email->message($message2);	
 		$this->email->send();
