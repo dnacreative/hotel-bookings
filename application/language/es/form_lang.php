@@ -1,7 +1,7 @@
 <?php
 
 $lang['title'] = 'Biniarroca Formulario de Reserva';
-$lang['description'] = 'Este formulario está asegurado con SSL y sigue una <a href="#">Política de Proteccion de Datos Personales</a> para su mayor seguridad. Por favor comprueba nuestra <a href="#">Política de Cancelación</a> en nuestra página web.';
+$lang['description'] = 'Este formulario está asegurado con SSL y sigue una <a href="data_es.html" target="_blank">Política de Proteccion de Datos Personales</a> para su mayor seguridad. Por favor comprueba nuestra <a href="cancel_es.html" target="_blank">Política de Cancelación</a> en nuestra página web.';
 
 $lang['name'] = 'Nombre completo';
 $lang['first'] = 'Nombre';
@@ -36,12 +36,13 @@ $lang['cc_number'] = 'Número Tarjeta de Crédito';
 $lang['cc_holder'] = 'Nombre completo del titular';
 $lang['cc_expiry'] = 'Fecha de caducidad';
 
-$lang['agreement'] = 'He leído y ACEPTO las <a href="#">Condiciones Legales</a>';
+$lang['agreement'] = 'He leído y ACEPTO las condiciones legales esmentadas previamente.';
 $lang['submit'] = 'Enviar';
 
 
 $lang['bookingcode'] = 'Código de reserva';
 $lang['personalinfo'] = 'Información personal';
-$lang['thanks'] = 'Gracias, hemos recibido su reserva. Por favor compruebe los datos a continuación, y pongáse en contacto si hay algún error.'
+$lang['thanks'] = 'Gracias, hemos recibido su reserva. Por favor compruebe los datos a continuación, y pongáse en contacto si hay algún error.';
+$lang['thanksform'] = 'Gracias por su solicitud. Nos pondremos en contacto en breve.';
 
 ?>

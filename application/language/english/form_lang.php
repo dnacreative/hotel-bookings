@@ -1,7 +1,7 @@
 <?php
 
 $lang['title'] = 'Biniarroca Booking Form';
-$lang['description'] = 'This form is secured with SSL and follows a <a href="#">Policy of Protection Of Personal Data</a> for your security. Please check our <a href="#">Cancellation Policy</a> on our web site.';
+$lang['description'] = 'This form is secured with SSL and follows a <a href="data_en.html" target="_blank">Policy of Protection Of Personal Data</a> for your security. Please check our <a href="cancel_en.html" target="_blank">Cancellation Policy</a> on our web site.';
 
 $lang['name'] = 'Name';
 $lang['first'] = 'First';
@@ -36,12 +36,12 @@ $lang['cc_number'] = 'Credit Card Number';
 $lang['cc_holder'] = 'Card Holder Name';
 $lang['cc_expiry'] = 'Expiry Date';
 
-$lang['agreement'] = 'I have read and I ACCEPT the <a href="#">Legal Agreement</a>';
+$lang['agreement'] = 'I have read and I ACCEPT all the legal agreements';
 $lang['submit'] = 'Submit';
 
 
 $lang['bookingcode'] = 'Booking Code';
 $lang['personalinfo'] = 'Personal Info';
-$lang['thanks'] = 'Thank you, we have recieved your booking. Please check all the data, and contact us if there is any error.'
-
+$lang['thanks'] = 'Thank you, we have recieved your booking. Please check all the data, and contact us if there is any error.';
+$lang['thanksform'] = 'Thank you for your enquiry. We will contact you shortly.';
 ?>

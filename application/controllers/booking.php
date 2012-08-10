@@ -60,6 +60,13 @@ class Booking extends CI_Controller {
 		$this->_sendmail($data,'eduardo.wass@est.fib.upc.edu');
 
 		// Load thankyou message
+
+		// Load language strings
+		$this->lang->is_loaded = array();
+		$this->lang->language = array();
+		$this->lang->load('form', $data['language']);
+		$thanks=$this->lang->line('thanksform');
+		$data = array('thanks' => $thanks);
 		$this->load->view('thankyou',$data);
 
 	}
