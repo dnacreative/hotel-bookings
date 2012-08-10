@@ -1,11 +1,12 @@
 <?php
 
 $lang['title'] = 'Biniarroca Booking Form';
-$lang['description'] = 'This form is secured with SSL and follows a <a href="#">Policy of Protection Of Personal Data</a> for your security. Please check our cancellation policy on our web site.';
+$lang['description'] = 'This form is secured with SSL and follows a <a href="#">Policy of Protection Of Personal Data</a> for your security. Please check our <a href="#">Cancellation Policy</a> on our web site.';
 
 $lang['name'] = 'Name';
 $lang['first'] = 'First';
 $lang['last'] = 'Last';
+$lang['passport'] = 'Passport';
 $lang['email'] = 'Email';
 $lang['phone'] = 'Phone';
 $lang['address'] = 'Address';
@@ -37,5 +38,10 @@ $lang['cc_expiry'] = 'Expiry Date';
 
 $lang['agreement'] = 'I have read and I ACCEPT the <a href="#">Legal Agreement</a>';
 $lang['submit'] = 'Submit';
+
+
+$lang['bookingcode'] = 'Booking Code';
+$lang['personalinfo'] = 'Personal Info';
+$lang['thanks'] = 'Thank you, we have recieved your booking. Please check all the data, and contact us if there is any error.'
 
 ?>

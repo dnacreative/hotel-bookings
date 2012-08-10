@@ -39,7 +39,7 @@ em { font-weight: bold; padding-right: 1em; vertical-align: top; color:red; }
 	
 		<h1><a>.</a></h1>
 		<form id="myform" class="appnitro" method="post" action="index.php/booking/save">
-		
+		<input type="hidden" name="lan" id="lan" value="<?php if( isset($_GET['lan']) ) { echo $_GET['lan']; } else { echo "english";  }  ?>" />
 		<div class="form_description">
 			<h2><?= $this->lang->line('title'); ?></h2>
 			<p><?= $this->lang->line('description'); ?></p>

@@ -21,6 +21,7 @@ class Booking extends CI_Controller {
 
 		// DB fields <- Form fields
 		$data = array(
+			'language'		=>	$_POST['lan'],
 			'name'			=>	$_POST['name'],
 			'surname'		=>	$_POST['surname'],
 			'passport'		=>	$_POST['passport'],
@@ -56,7 +57,7 @@ class Booking extends CI_Controller {
 		$this->db->insert('bookings', $data);
 
 		// Send email to biniarroca and copy to client
-		$this->_sendmail($data,'hotel@biniarroca.com');
+		$this->_sendmail($data,'eduardo.wass@est.fib.upc.edu');
 
 		// Load thankyou message
 		$this->load->view('thankyou',$data);
@@ -103,99 +104,41 @@ class Booking extends CI_Controller {
 
     function _sendmail($data,$email){
 
+    	// Load email libs
     	$this->load->library('email');
-		$config['mailtype'] = 'html';
-		//$config['charset'] = 'utf-8';
 
-		//$this->email->initialize($config);
 
 		// Clear example data from restaurant if present
-		if($data['restaurant']=="Example: 19/08/2014 - 20:00"){
-			$data['restaurant']="";
-		}
+		if($data['restaurant']=="Example: 19/08/2014 - 20:00"){$data['restaurant']="";}
 
-		// Build email message
-		$message="
+		//=======================================
+		// Send copy to hotel
 
-		BOOKING CODE: " . $data['code'] . "
-
-		[Personal Info]
-
-		Full Name: " . $data['name'] . " " . $data['surname'] . "
-		Passport: " . $data['passport'] . "
-		Email: " . $data['email'] . "
-		Phone: " . $data['phone'] . "
-		Address:
-		" . $data['street_addr_1'] . "
-		" . $data['street_addr_2'] . "
-		" . $data['city'] . "
-		" . $data['state'] . "
-		" . $data['zipcode'] . "
-		" . $data['country'] . "
-
-		======================================
-
-		[Booking Info]
-
-		Arrival Date: " . $data['arrival'] . "
-		Arrival Flight: " . $data['arrival_flight'] . "
-
-		Departure Date: " . $data['departure'] . "
-		Departure Flight: " . $data['departure_flight'] . "
-
-		Number of persons: " . $data['persons'] . "
-		Suites: " . $data['suites'] . "
-		Doubles: " . $data['doubles'] . "
-		Singles: " . $data['singles'] . "
-
-		Restaurant reservations:
-		" . $data['restaurant'] . "
-
-		Special requirements:
-		" . $data['comments'] . "
-
-		======================================
-
-		[Credit Card]
-
-		Type: " . $data['cc_type'] . "
-		Number: " . $data['cc_number'] . "
-		Card Holder: " . $data['cc_name'] . " " . $data['cc_surname'] . "
-		Expiry Date: " . $data['cc_expiry_mm'] . "/" . $data['cc_expiry_yy'] . "
-
-		";
-
+		$message=$this->_buildmail($data,'english',0); // Message for hotel
 		$this->email->from($data['email'], $data['name'] . " " . $data['surname']);
 		$this->email->to($email);
 		$this->email->subject('Biniarroca Booking ' . $data['code'] );
 		$this->email->message($message);	
 		$this->email->send();
 
-		//echo $this->email->print_debugger();
+
+
+
 
 		//=======================================
 		// Send copy to client
 
 
 		$this->email->clear();
-
-		$message2="Thank you " . $data['name'] . " " . $data['surname'] . ",
-We have recived your reservation request and will contact you shortly to confirm your booking. Reservation Department Biniarroca Hotel.
-
-This is the booking information that we have, please contact us if there is any error:
-		" . $message;
-
+		$message_client=$this->_buildmail($data,$data['language'],1); // Message for client
 		$this->email->from('hotel@biniarroca.com', 'Hotel Biniarroca');
 		$this->email->to($data['email']);
-		$this->email->subject('Biniarroca Booking ' . $data['code'] );
-		$this->email->message($message2);	
+		$this->email->subject('Biniarroca Booking ' . $data['code']);
+		$this->email->message($message_client);	
 		$this->email->send();
 
-
-
-
 		//echo $this->email->print_debugger();
-
+		//echo $data['language'];
 	}
 
 
@@ -215,6 +158,81 @@ This is the booking information that we have, please contact us if there is any 
 		$code= $data['name'][0]. $data['surname'][0]  . $data['arrival'][8] . $data['arrival'][6] . $data['departure'][8] . $data['departure'][6]  . $data['email'][0] . $data['email'][1] . $data['phone'][0] . $data['phone'][1];	
 		return strtoupper($code);
 
+	}
+
+	function _buildmail($data,$language,$isclient){
+
+		// Load language strings
+		$this->lang->is_loaded = array();
+		$this->lang->language = array();
+		$this->lang->load('form', $language);
+
+		
+
+		// Build email message
+		$message="
+
+
+		" . $this->lang->line('bookingcode') . ": " . $data['code'] . "
+		
+
+		[" . $this->lang->line('personalinfo') . "]
+
+		" . $this->lang->line('name') . " : " . $data['name'] . " " . $data['surname'] . "
+		" . $this->lang->line('passport') . ": " . $data['passport'] . "
+		" . $this->lang->line('email') . ": " . $data['email'] . "
+		" . $this->lang->line('phone') . ": " . $data['phone'] . "
+		" . $this->lang->line('address') . ":
+		" . $data['street_addr_1'] . "
+		" . $data['street_addr_2'] . "
+		" . $data['city'] . "
+		" . $data['state'] . "
+		" . $data['zipcode'] . "
+		" . $data['country'] . "
+
+		======================================
+
+		[" . $this->lang->line('bookindtls') . "]
+
+		" . $this->lang->line('arrival') . ": " . $data['arrival'] . "
+		" . $this->lang->line('flightno') . ": " . $data['arrival_flight'] . "
+
+		" . $this->lang->line('departure') . ": " . $data['departure'] . "
+		" . $this->lang->line('flightno') . ": " . $data['departure_flight'] . "
+
+		" . $this->lang->line('persons') . ": " . $data['persons'] . "
+		" . $this->lang->line('suites') . ": " . $data['suites'] . "
+		" . $this->lang->line('doubles') . ": " . $data['doubles'] . "
+		" . $this->lang->line('singles') . ": " . $data['singles'] . "
+
+		" . $this->lang->line('restaurant') . ":
+		" . $data['restaurant'] . "
+
+		" . $this->lang->line('comments') . ":
+		" . $data['comments'] . "
+
+		======================================
+
+		[" . $this->lang->line('cc') . "]
+
+		" . $this->lang->line('cc_type') . ": " . $data['cc_type'] . "
+		" . $this->lang->line('cc_number') . ": " . $data['cc_number'] . "
+		" . $this->lang->line('cc_holder') . ": " . $data['cc_name'] . " " . $data['cc_surname'] . "
+		" . $this->lang->line('cc_expiry') . ": " . $data['cc_expiry_mm'] . "/" . $data['cc_expiry_yy'] . "
+
+		======================================
+
+		Biniarroca Country House Hotel, Camí Vell 57, Sant Lluís, Menorca 07710
+		email hotel@biniarroca.com
+		Tel.: (+34) 971 150 059
+		Fax: (+34) 971 151 250
+		Mobile: (+34) 619 460 942.
+		© Biniarroca Hotel
+		";
+
+		if($isclient) $message=$this->lang->line('thanks').$message;
+
+		return $message;
 	}
 
 
