@@ -48,16 +48,26 @@ class Booking extends CI_Controller {
 		    'cc_name' 		=>	$_POST['cc_name'],
 		    'cc_surname' 	=>	$_POST['cc_surname'],
 		    'cc_expiry_mm'  =>	$_POST['cc_expiry_mm'],
-  			'cc_expiry_yy'  =>	$_POST['cc_expiry_yy']
+  			'cc_expiry_yy'  =>	$_POST['cc_expiry_yy'],
+  			'room' 		  	=>	NULL,
+  			'mailing' 		=>	isset($_POST['mailing']),
+  			'diet' 		  	=>	NULL,
+  			'priv_comments' =>	NULL,
+  			'deposit' 		=>	NULL,
+  			'rate' 		  	=>	NULL
 		);
 
+		// Clear example data from restaurant if present
+		if($data['restaurant']=="Example: 19/08/2014 - 20:00"){$data['restaurant']="";}
+
+		// Generate booking code
 		$data['code']=$this->_gencode($data);
 		
 		// Save to DB
 		$this->db->insert('bookings', $data);
 
 		// Send email to biniarroca and copy to client
-		$this->_sendmail($data,'hotel@biniarroca.com');
+		$this->_sendmail($data,'eduardo.wass@est.fib.upc.edu');
 
 		// Load thankyou message
 
@@ -90,6 +100,10 @@ class Booking extends CI_Controller {
 		 	$crud->change_field_type('created_at', 'hidden');
 		 	$crud->change_field_type('restaurant', 'text');
 		 	$crud->change_field_type('comments', 'text');
+		 	$crud->change_field_type('priv_comments', 'text');
+		 	$crud->change_field_type('diet', 'text');
+		 	$crud->display_as('diet','Dietary prefferences');
+		 	$crud->display_as('priv_comments','Private comments');
 		 	$crud->order_by('created_at','desc');
 		    $output = $crud->render();
 		 
@@ -114,9 +128,6 @@ class Booking extends CI_Controller {
     	// Load email libs
     	$this->load->library('email');
 
-
-		// Clear example data from restaurant if present
-		if($data['restaurant']=="Example: 19/08/2014 - 20:00"){$data['restaurant']="";}
 
 		//=======================================
 		// Send copy to hotel
