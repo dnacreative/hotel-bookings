@@ -44,4 +44,5 @@ $lang['bookingcode'] = 'Buchungscode';
 $lang['personalinfo'] = 'Persönliche information';
 $lang['thanks'] = 'Danke, wir haben ihre buchung erhalten. Bitte überprüfen sie alle daten, und kontaktieren sie uns wenn es einen fehler gibt.';
 $lang['thanksform'] = 'Vielen dank für ihre anfrage. Wir werden sie umgehend kontaktieren.';
+$lang['mailing'] = 'Ich möchte Biniarroca die Mailingliste';
 ?>

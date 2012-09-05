@@ -5,19 +5,54 @@ class Booking extends CI_Controller {
 	public function index()
 	{
 		
-		// Get language files (default=english)
+		// Get language files (default=en)
 		if(isset($_GET['lan'])){
 			$this->lang->load('form', $_GET['lan']);
 		} else {
-			$this->lang->load('form', 'english');
+			$this->lang->load('form', 'en');
 		}
 		
 		// Load booking form view
 		$this->load->view('booking');
 	}
 
+	public function datefilter()
+	{
+
+		$yyyy=$_POST['year'];
+
+		$mm=$_POST['month'];
+		if(strlen($mm)<2 && $mm!=0) $mm="0".$mm;
+
+		$dd=$_POST['day'];
+		if(strlen($dd)<2 && $dd!=0) $dd="0".$dd;
+
+		if($yyyy){
+			$arrdate=$yyyy;
+			if($mm) { 
+			  $arrdate=$arrdate . "-" . $mm;
+				if($dd) $arrdate=$arrdate . "-" . $dd;
+			}
+		}
+
+		$this->load->helper('url');
+		//echo $arrdate;
+		$url= base_url().'index.php/booking/admin/?arr_date='.$arrdate;
+		//echo $url;
+		redirect($url);
+		//header('Location: '.$url.' ');  
+	}
+
 	public function save()
 	{
+
+	// Get language files (default=en)
+		if(isset($_GET['lan'])){
+			$this->lang->load('form', $_GET['lan']);
+		} else {
+			$this->lang->load('form', 'en');
+		}
+		
 
 		// DB fields <- Form fields
 		$data = array(
@@ -96,7 +131,7 @@ class Booking extends CI_Controller {
 			$crud = new grocery_CRUD();
 			$crud->set_theme('datatables');
 		    $crud->set_table('bookings');
-		    $crud->columns('created_at','name','surname','passport','arrival','departure','code');
+		    $crud->columns('created_at','name','surname','passport','arrival','departure','language','country','code');
 		 	$crud->change_field_type('created_at', 'hidden');
 		 	$crud->change_field_type('restaurant', 'text');
 		 	$crud->change_field_type('comments', 'text');
@@ -105,6 +140,22 @@ class Booking extends CI_Controller {
 		 	$crud->display_as('diet','Dietary prefferences');
 		 	$crud->display_as('priv_comments','Private comments');
 		 	$crud->order_by('created_at','desc');
+
+		 	// Filter by date
+		 	if(isset($_GET['arr_date'])){
+				$crud->like('arrival',$_GET['arr_date']);
+			}
+
+			// Filter by language
+			if(isset($_GET['lan'])){
+				$crud->like('language',$_GET['lan']);
+			}
+
+			// Filter by country
+			if(isset($_GET['country'])){
+				$crud->like('country',$_GET['country']);
+			}
+
 		    $output = $crud->render();
 		 
 		    $this->_example_output($output);
@@ -132,7 +183,7 @@ class Booking extends CI_Controller {
 		//=======================================
 		// Send copy to hotel
 
-		$message=$this->_buildmail($data,'english',0); // Message for hotel
+		$message=$this->_buildmail($data,'en',0); // Message for hotel
 		$this->email->from($data['email'], $data['name'] . " " . $data['surname']);
 		$this->email->to($email);
 		$this->email->subject('Biniarroca Booking ' . $data['code'] );
@@ -162,18 +213,7 @@ class Booking extends CI_Controller {
 
 	function _gencode($data){
 
-		// Generates booking code
-		// format: ab8686ee11
-		// a: name 
-		// b: surname
-		// 8: arrival day (just 1 digit)
-		// 6: arrival month (just 1 digit)
-		// 8: departure day (just 1 digit)
-		// 6: departure month (just 1 digit)
-		// ee: email
-		// 11: phone
-
-		$code= $data['name'][0]. $data['surname'][0]  . $data['arrival'][8] . $data['arrival'][6] . $data['departure'][8] . $data['departure'][6]  . $data['email'][0] . $data['email'][1] . $data['phone'][0] . $data['phone'][1];	
+		$code = date("y") . $this->db->count_all_results('bookings');
 		return strtoupper($code);
 
 	}

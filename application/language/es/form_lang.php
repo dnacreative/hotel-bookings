@@ -44,5 +44,5 @@ $lang['bookingcode'] = 'Código de reserva';
 $lang['personalinfo'] = 'Información personal';
 $lang['thanks'] = 'Gracias, hemos recibido su reserva. Por favor compruebe los datos a continuación, y pongáse en contacto si hay algún error.';
 $lang['thanksform'] = 'Gracias por su solicitud. Nos pondremos en contacto en breve.';
-
+$lang['mailing'] = 'Me gustaría subscribirme a la lista de correo de Biniarroca';
 ?>

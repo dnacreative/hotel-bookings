@@ -39,7 +39,7 @@ em { font-weight: bold; padding-right: 1em; vertical-align: top; color:red; }
 	
 		<h1><a>.</a></h1>
 		<form id="myform" class="appnitro" method="post" action="index.php/booking/save">
-		<input type="hidden" name="lan" id="lan" value="<?php if( isset($_GET['lan']) ) { echo $_GET['lan']; } else { echo "english";  }  ?>" />
+		<input type="hidden" name="lan" id="lan" value="<?php if( isset($_GET['lan']) ) { echo $_GET['lan']; } else { echo "en";  }  ?>" />
 		<div class="form_description">
 			<h2><?= $this->lang->line('title'); ?></h2>
 			<p><?= $this->lang->line('description'); ?></p>
@@ -559,10 +559,14 @@ em { font-weight: bold; padding-right: 1em; vertical-align: top; color:red; }
 			
 				<li class="buttons">
 
+				<input type="checkbox" checked="yes" class="checkbox" id="mailing" name="mailing" />
+				<label class="choice" for="mailing"><?= $this->lang->line('mailing'); ?></label>
+
+
 				<input type="checkbox" class="checkbox" id="agree" name="agree" />
 				<label class="choice" for="agree"><?= $this->lang->line('agreement'); ?></label>
-				
-			    <br>
+
+				<br>
 
 
 			    <div align="center"><input id="saveForm" class="button_text" type="submit" name="submit" value="<?= $this->lang->line('submit'); ?>" /></div>
