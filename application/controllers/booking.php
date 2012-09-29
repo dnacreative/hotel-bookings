@@ -102,7 +102,7 @@ class Booking extends CI_Controller {
 		$this->db->insert('bookings', $data);
 
 		// Send email to biniarroca and copy to client
-		$this->_sendmail($data,'eduardo.wass@est.fib.upc.edu');
+		$this->_sendmail($data,'hotel@biniarroca.com');
 
 		// Load thankyou message
 
