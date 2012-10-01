@@ -156,6 +156,11 @@ class Booking extends CI_Controller {
 				$crud->like('country',$_GET['country']);
 			}
 
+			// Filter by mailing
+			if(isset($_GET['mailing'])){
+				$crud->like('mailing',$_GET['mailing']);
+			}
+
 		    $output = $crud->render();
 		 
 		    $this->_example_output($output);

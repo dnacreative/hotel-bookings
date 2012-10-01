@@ -62,7 +62,17 @@
 	<span class="ui-button-text"><?php echo $this->l('list_add'); ?> <?php echo $subject?></span>
 </a>
 
-<a role="button" class="edit_button ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-primary" href="<?php echo $export_url?>">
+<a role="button" class="edit_button ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-primary" href="admin/export/
+<?php
+   foreach ($_GET as $key => $value)
+   {
+      $key = htmlspecialchars( $key );
+      $value = htmlspecialchars( $value );
+      echo ""."?$key=$value";
+      //	echo $url_link;
+   }
+?>
+">
 	<span class="ui-button-icon-primary ui-icon ui-icon-document"></span>
 	<span class="ui-button-text">Export as XLS</span>
 </a>

@@ -147,8 +147,8 @@ foreach($css_files as $file): ?>
 			?>
 
 			
-			<div id="arrivaltoggle" class="form-content form-div" style="background-color:#ccc;padding:10px;border:1px dotted;margin:5px">
-				<strong>(+) Filters:</strong>
+			<div class="form-content form-div" style="background-color:#ccc;padding:10px;border:1px dotted;margin:5px">
+				<a href="#" id="arrivaltoggle"><strong>(+) Filters:</strong></a>
 				<div id="arrival" style="display:none">
 			</br>
 
@@ -406,6 +406,17 @@ foreach($css_files as $file): ?>
 			</select>
 
 				<input type="submit" value="Filter by Country">
+			
+			</form>
+
+			<form style="display:inline;" action="<?= base_url("index.php/booking/admin"); ?>">
+			
+				
+				<select name="mailing" class="combosmall">
+					<option value="1" selected="selected">Active</option>
+					<option value="0">Inactive</option>
+				</select>
+				<input type="submit" value="Filter by Mailing">
 			
 			</form>
 
