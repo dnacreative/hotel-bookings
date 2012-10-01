@@ -131,7 +131,7 @@ class Booking extends CI_Controller {
 			$crud = new grocery_CRUD();
 			$crud->set_theme('datatables');
 		    $crud->set_table('bookings');
-		    $crud->columns('created_at','name','surname','passport','arrival','departure','language','country','code');
+		    $crud->columns('created_at','name','surname','passport','arrival','departure','country','email','code');
 		 	$crud->change_field_type('created_at', 'hidden');
 		 	$crud->change_field_type('restaurant', 'text');
 		 	$crud->change_field_type('comments', 'text');
