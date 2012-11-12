@@ -116,6 +116,84 @@ class Booking extends CI_Controller {
 
 	}
 
+	public function _viewlink($primary_key , $row)
+	{
+	    return site_url('booking/view').'?id='.$row->id;
+	}
+ 
+
+	public function view(){
+	// Generates admin page
+
+		// Load login libs
+		$this->load->library('tank_auth');
+		$this->load->helper('url');
+
+		// If logged in, show admin panel
+		if( $this->tank_auth->is_logged_in() ) {
+
+			// Check if user is admin
+			if($this->tank_auth->get_username()=="hs0018"){ $is_admin=true; } else { $is_admin=false; }
+
+
+			$crud = new grocery_CRUD();
+			if(!$is_admin) {
+				// if not admin
+				$crud->unset_delete();
+				$crud->unset_edit();
+				$crud->add_action('View', '', '','ui-icon-zoomin',array($this,'_viewlink'));
+			}
+
+		    $crud->set_table('bookings');
+		 	// Filter by date
+		 	if(isset($_GET['arr_date'])){
+				$crud->like('arrival',$_GET['arr_date']);
+			}
+
+			// Filter by language
+			if(isset($_GET['lan'])){
+				$crud->like('language',$_GET['lan']);
+			}
+
+			// Filter by country
+			if(isset($_GET['country'])){
+				$crud->like('country',$_GET['country']);
+			}
+
+			// Filter by mailing
+			if(isset($_GET['mailing'])){
+				$crud->like('mailing',$_GET['mailing']);
+			}
+
+		    $output = $crud->render();
+
+		    $output2->js_files=$output->js_files;
+		    $output2->css_files=$output->css_files;
+
+		    
+		    $query = $this->db->get_where('bookings', array('id' => $_GET['id']));
+		    $fields = $query->list_fields();
+		    $row = $query->row();
+		    foreach ($fields as $field)
+			{
+			   $output2->output .= "<br>". $field . ": ";
+			   $output2->output .= $row->$field;
+			}
+			
+		    //echo $row->name;
+
+		    
+			
+		    //$output2->output=$_GET['id'];
+		    $this->_example_output($output2);
+			
+		
+		} else {
+			// else send to login page
+			redirect('/auth/login');
+		}
+	}
+
 	public function admin()
 	{
 
@@ -128,7 +206,19 @@ class Booking extends CI_Controller {
 		// If logged in, show admin panel
 		if( $this->tank_auth->is_logged_in() ) {
 
+			// Check if user is admin
+			if($this->tank_auth->get_username()=="hs0018"){ $is_admin=true; } else { $is_admin=false; }
+
+
 			$crud = new grocery_CRUD();
+			if(!$is_admin) {
+				// if not admin
+				$crud->unset_delete();
+				$crud->unset_edit();
+				
+				$crud->add_action('View', '', '','ui-icon-zoomin',array($this,'_viewlink'));
+			}
+
 			$crud->set_theme('datatables');
 		    $crud->set_table('bookings');
 		    $crud->columns('created_at','name','surname','passport','arrival','departure','country','email','code');
