@@ -137,6 +137,7 @@ class Booking extends CI_Controller {
 
 
 			$crud = new grocery_CRUD();
+			$crud->set_theme('datatables');
 			if(!$is_admin) {
 				// if not admin
 				$crud->unset_delete();
@@ -167,25 +168,25 @@ class Booking extends CI_Controller {
 
 		    $output = $crud->render();
 
+		    /*
 		    $output2->js_files=$output->js_files;
 		    $output2->css_files=$output->css_files;
-
+			*/
 		    
 		    $query = $this->db->get_where('bookings', array('id' => $_GET['id']));
 		    $fields = $query->list_fields();
-		    $row = $query->row();
-		    foreach ($fields as $field)
-			{
-			   $output2->output .= "<br>". $field . ": ";
-			   $output2->output .= $row->$field;
-			}
+		    $row = $query->row_array();
+			$this->load->library('view');
+			$html=$this->view->gen($row);
 			
+
+			$output->output = $html;
 		    //echo $row->name;
 
 		    
 			
 		    //$output2->output=$_GET['id'];
-		    $this->_example_output($output2);
+		    $this->_example_output($output);
 			
 		
 		} else {
