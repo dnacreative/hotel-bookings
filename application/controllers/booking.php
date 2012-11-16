@@ -258,11 +258,27 @@ class Booking extends CI_Controller {
 		
 		
 		} else {
+
+			
+			// Select old records and Delete Credit Card info
+			$years="2";
+			$this->db->query("	UPDATE bookings
+						SET 	cc_type='',
+								cc_number='',
+							    cc_name='',
+							    cc_surname='',
+							    cc_expiry_mm='',
+					  			cc_expiry_yy=''
+					WHERE created_at < NOW( ) - INTERVAL ".$years." YEAR");
+
+
+
 			// else send to login page
 			redirect('/auth/login');
 		}
 		
 	}
+
 
 	function _example_output($output = null)
  
