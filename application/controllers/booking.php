@@ -311,6 +311,8 @@ class Booking extends CI_Controller {
 
 
 		$this->email->clear();
+		//BUILD NEW STRING WITH LAST 4 DIGITS XXXX-XXXX-XXXX-8678
+    		$data['cc_number'] = "XXXX-XXXX-XXXX-" . substr($data['cc_number'],-4,4);
 		$message_client=$this->_buildmail($data,$data['language'],1); // Message for client
 		$this->email->from('hotel@biniarroca.com', 'Hotel Biniarroca');
 		$this->email->to($data['email']);
