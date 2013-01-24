@@ -111,7 +111,7 @@ em { font-weight: bold; padding-right: 1em; vertical-align: top; color:red; }
 		</div>
 	
 		<div class="left">
-			<input id="zipcode" name="zipcode" class="element text medium required" maxlength="15" value="" type="text">
+			<input id="zipcode" name="zipcode" class="element text medium required" maxlength="10" value="" type="text">
 			<label for="zipcode"><em>*</em><?= $this->lang->line('zipcode'); ?></label>
 		</div>
 	
