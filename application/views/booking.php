@@ -529,7 +529,7 @@ em { font-weight: bold; padding-right: 1em; vertical-align: top; color:red; }
 		</li>		<li id="li_15" >
 		<label class="description" for="cc_number"><em>*</em><?= $this->lang->line('cc_number'); ?></label>
 		<div>
-			<input id="cc_number" name="cc_number" class="element text large required digits" type="text" size="15" maxlength="15" minlength="15"  maxlength="15" value=""/> 
+			<input id="cc_number" name="cc_number" class="element text large required digits" type="text" size="16" maxlength="16" minlength="16" value=""/> 
 		</div> 
 		</li>		<li id="li_18" >
 		<label class="description" for="element_18"><em>*</em><?= $this->lang->line('cc_holder'); ?></label>
