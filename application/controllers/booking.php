@@ -91,7 +91,8 @@ class Booking extends CI_Controller {
   			'diet' 		  	=>	NULL,
   			'priv_comments' =>	NULL,
   			'deposit' 		=>	NULL,
-  			'rate' 		  	=>	NULL
+  			'rate' 		  	=>	NULL,
+  			'findus'		=> $_POST['findus']
 		);
 
 		// Clear example data from restaurant if present
