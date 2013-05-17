@@ -127,7 +127,7 @@ class Booking extends CI_Controller {
  
 
 	public function view(){
-	// Generates admin page
+	// Generates VIEW page (for not admin users)
 
 		// Load login libs
 		$this->load->library('tank_auth');
@@ -136,60 +136,23 @@ class Booking extends CI_Controller {
 		// If logged in, show admin panel
 		if( $this->tank_auth->is_logged_in() ) {
 
-			// Check if user is admin
-			if($this->tank_auth->get_username()=="hs0018"){ $is_admin=true; } else { $is_admin=false; }
-
-
+			// Load G.CRUD for CSS/JS file dependencies
 			$crud = new grocery_CRUD();
 			$crud->set_theme('datatables');
-			if(!$is_admin) {
-				// if not admin
-				$crud->unset_delete();
-				$crud->unset_edit();
-				$crud->add_action('View', '', '','ui-icon-zoomin',array($this,'_viewlink'));
-			}
-
 		    $crud->set_table('bookings');
-		 	// Filter by date
-		 	if(isset($_GET['arr_date'])){
-				$crud->like('arrival',$_GET['arr_date']);
-			}
-
-			// Filter by language
-			if(isset($_GET['lan'])){
-				$crud->like('language',$_GET['lan']);
-			}
-
-			// Filter by country
-			if(isset($_GET['country'])){
-				$crud->like('country',$_GET['country']);
-			}
-
-			// Filter by mailing
-			if(isset($_GET['mailing'])){
-				$crud->like('mailing',$_GET['mailing']);
-			}
-
 		    $output = $crud->render();
-
-		    /*
-		    $output2->js_files=$output->js_files;
-		    $output2->css_files=$output->css_files;
-			*/
 		    
+		    // Using id, get data from the booking
 		    $query = $this->db->get_where('bookings', array('id' => $_GET['id']));
 		    $fields = $query->list_fields();
 		    $row = $query->row_array();
+
+		    // Load View library (/libraries)
 			$this->load->library('view');
 			$html=$this->view->gen($row);
-			
-
 			$output->output = $html;
-		    //echo $row->name;
-
-		    
 			
-		    //$output2->output=$_GET['id'];
+		    // Output the html
 		    $this->_example_output($output);
 			
 		
