@@ -78,6 +78,7 @@ class Booking extends CI_Controller {
 		    'suites' 		=>	$_POST['suites'],
 		    'doubles' 		=>	$_POST['doubles'],
 		    'singles' 		=>	$_POST['singles'],
+		    'roomtype'		=> $_POST['roomtype'],
 		    'restaurant'	=>	$_POST['restaurant'],
 		    'comments' 		=>	$_POST['comments'],
 		    'cc_type'		=>	$_POST['cc_type'],
@@ -230,9 +231,11 @@ class Booking extends CI_Controller {
 		 	$crud->change_field_type('restaurant', 'text');
 		 	$crud->change_field_type('comments', 'text');
 		 	$crud->change_field_type('priv_comments', 'text');
+		 	$crud->change_field_type('findus', 'text');
 		 	$crud->change_field_type('diet', 'text');
 		 	$crud->display_as('diet','Dietary prefferences');
 		 	$crud->display_as('priv_comments','Private comments');
+		 	$crud->display_as('findus','How did you find us');
 		 	$crud->order_by('created_at','desc');
 
 		 	// Filter by date

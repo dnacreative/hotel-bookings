@@ -45,4 +45,14 @@ $lang['personalinfo'] = 'Persönliche information';
 $lang['thanks'] = 'Danke, wir haben ihre buchung erhalten. Bitte überprüfen sie alle daten, und kontaktieren sie uns wenn es einen fehler gibt.';
 $lang['thanksform'] = 'Vielen dank für ihre anfrage. Wir werden sie umgehend kontaktieren.';
 $lang['mailing'] = 'Ich möchte Biniarroca die Mailingliste';
+
+$lang['findus'] = 'Wie haben Sie uns gefunden?';
+
+$lang['roomtype'] = 'Requested Zimmertyp';
+$lang['roomtype1'] = 'classic room';
+$lang['roomtype2'] = 'classic double';
+$lang['roomtype3'] = 'classic mit Terrasse';
+$lang['roomtype4'] = 'Deluxe Doppelzimmer mit Terrasse';
+$lang['roomtype5'] = 'Garten Doppelzimmer mit Terrasse';
+$lang['roomtype6'] = 'Garten-Suite mit Terrasse';
 ?>

@@ -480,7 +480,9 @@ em { font-weight: bold; padding-right: 1em; vertical-align: top; color:red; }
 
 		</select>
 		</div> 
-		</li>		<li id="li_10" >
+		</li>		
+
+		<li id="li_10" >
 		<label class="description" for="singles"><?= $this->lang->line('singles'); ?></label>
 		<div>
 		<select class="element select small" id="singles" name="singles"> 
@@ -493,7 +495,22 @@ em { font-weight: bold; padding-right: 1em; vertical-align: top; color:red; }
 
 		</select>
 		</div> 
+		</li>
+
+		<li id="li_11" >
+		<label class="description" for="roomtype"><?= $this->lang->line('roomtype'); ?></label>
+		<div>
+		<select class="element select small" id="roomtype" name="roomtype"> 
+			<option value="classic room" selected><?= $this->lang->line('roomtype1'); ?></option>
+			<option value="classic double"><?= $this->lang->line('roomtype2'); ?></option>
+			<option value="classic with terrace" ><?= $this->lang->line('roomtype3'); ?></option>
+			<option value="deluxe double with terrace" ><?= $this->lang->line('roomtype4'); ?></option>
+			<option value="garden double with terrace" ><?= $this->lang->line('roomtype5'); ?></option>
+			<option value="garden suite with terrace" ><?= $this->lang->line('roomtype6'); ?></option>
+		</select>
+		</div> 
 		</li>		
+
 
 		<li id="li_17" >
 		<label class="description" for="comments"><?= $this->lang->line('restaurant'); ?></label>
@@ -507,6 +524,14 @@ em { font-weight: bold; padding-right: 1em; vertical-align: top; color:red; }
 		<label class="description" for="comments"><?= $this->lang->line('comments'); ?></label>
 		<div>
 			<textarea id="comments" name="comments" class="element textarea medium"></textarea> 
+		</div>
+		</li>
+
+
+		<li id="li_19" >
+		<label class="description" for="findus"><em>*</em><?= $this->lang->line('findus'); ?></label>
+		<div>
+			<textarea id="findus" name="findus" class="element textarea medium required"></textarea> 
 		</div>
 		</li>
 
